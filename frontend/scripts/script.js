@@ -1,5 +1,7 @@
 import nav from "./components/header.js";
-import sendToMongoDB from "./components/postModels.js";
+import sendModelToMongoDB from "./components/postModels.js";
+import sendVehicleToMongoDB from "./components/postVehicles.js";
+import showAllModels from "./components/viewAllModels.js";
 
 console.log(`working`);
 nav();

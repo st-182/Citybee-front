@@ -1,7 +1,7 @@
 // Variables
 const formElement = document.querySelector("#model-form");
 // Functions
-const sendToMongoDB = (e) => {
+const sendModelToMongoDB = (e) => {
   e.preventDefault();
   const newModel = {
     name: e.target[0].value,
@@ -22,7 +22,7 @@ const sendToMongoDB = (e) => {
 };
 // Events
 
-formElement ? formElement.addEventListener("submit", sendToMongoDB) : null;
+formElement ? formElement.addEventListener("submit", sendModelToMongoDB) : null;
 
 //Exports
-export default sendToMongoDB;
+export default sendModelToMongoDB;

@@ -15,7 +15,46 @@
   </head>
   <body>
     <header></header>
-    <main></main>
+    <main>
+      <!-- Form for adding models -->
+      <div class="container">
+        <form id="vehicle-form">
+          <select
+            id="vehicle-model-id"
+            class="form-select"
+            aria-label="Default select example"
+          >
+            <option selected>Choose model</option>
+          </select>
+          <div class="mb-3">
+            <label for="number-plate" class="form-label">Number plate</label>
+            <input
+              type="text"
+              class="form-control"
+              id="number-plate"
+              aria-describedby="makeModelName"
+              placeholder="ABC123"
+            />
+            <div id="makeModelName" class="form-text">
+              Check this twice, since it is the most important information in
+              this form.
+            </div>
+          </div>
+          <div class="mb-3">
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Choose country</option>
+              <option value="LT">LT</option>
+              <option value="LV">LV</option>
+              <option value="EE">EE</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Upload new vehicle
+          </button>
+        </form>
+      </div>
+      <!-- END -->
+    </main>
     <footer></footer>
   </body>
 </html>
