@@ -28,8 +28,6 @@ const nav = () => {
     </nav>
   
 `;
-
-  console.log(`too`);
 };
 
 export default nav;
