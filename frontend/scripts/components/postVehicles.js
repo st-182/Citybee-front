@@ -74,7 +74,6 @@ const sendVehicleToMongoDB = (e) => {
     number_plate: e.target[1].value.toUpperCase(),
     country_location: e.target[2].value,
   };
-  console.log(newModel);
 
   fetch(`http://localhost:5000/vehicles`, {
     method: `POST`,
