@@ -1,18 +1,18 @@
 // Variables
 //DOM
-const tableVehicleElement = document.querySelector("#table-vehicle");
+const tableVehicleElement = document.querySelector(`#table-vehicle`);
 //logic
 const allVehiclesFromDB = [];
 // Functions
 const showAllVehicles = async () => {
-  await fetch("http://localhost:5000/vehicles")
+  await fetch(`http://localhost:5000/vehicles`)
     .then((res) => {
       if (res.status !== 200) {
         const responseOrError = document.querySelector(`#response-or-error`);
         responseOrError.textContent = `Something went wrong with vehicles, error:${res.status})`;
         responseOrError.classList.add(`text-danger`);
         setTimeout(() => {
-          responseOrError.textContent = "";
+          responseOrError.textContent = ``;
           responseOrError.classList.remove(`text-danger`);
         }, 5000);
       }
@@ -20,7 +20,7 @@ const showAllVehicles = async () => {
     })
     .then((data) => {
       allVehiclesFromDB.push(...data);
-      let output = "";
+      let output = ``;
       console.log(data);
       data.forEach((item) => {
         output += `
@@ -54,7 +54,7 @@ const filterByCountry = (e) => {
 
   allVehiclesFromDB
     .filter((vehicle) =>
-      e.target.textContent !== "Show All"
+      e.target.textContent !== `Show All`
         ? vehicle.country_location === e.target.textContent
         : vehicle === vehicle
     )
@@ -73,7 +73,7 @@ const filterByCountry = (e) => {
 
 // Events
 tableVehicleElement
-  ? document.addEventListener("DOMContentLoaded", showAllVehicles)
+  ? document.addEventListener(`DOMContentLoaded`, showAllVehicles)
   : null;
 
 //Exports

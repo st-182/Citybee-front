@@ -1,14 +1,14 @@
 // Variables
-const formElement = document.querySelector("#vehicle-form");
+const formElement = document.querySelector(`#vehicle-form`);
 // Functions
 const createOptions = () => {
-  const selectElement = document.querySelector("#vehicle-model-id");
+  const selectElement = document.querySelector(`#vehicle-model-id`);
 
-  fetch("http://localhost:5000/models")
+  fetch(`http://localhost:5000/models`)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
-      let output = "";
+      let output = ``;
       data.forEach((item) => {
         output += `
         <option value="${item._id}">${item.name}</option>
@@ -25,7 +25,7 @@ const sendVehicleToMongoDB = (e) => {
     responseOrError.textContent = `You have to choose Model! (if there is no models - upload one first)`;
     responseOrError.classList.add(`text-danger`);
     setTimeout(() => {
-      responseOrError.textContent = "";
+      responseOrError.textContent = ``;
       responseOrError.classList.remove(`text-danger`);
     }, 5000);
     return;
@@ -36,7 +36,7 @@ const sendVehicleToMongoDB = (e) => {
     responseOrError.textContent = `You have to enter correct Number Plate!`;
     responseOrError.classList.add(`text-danger`);
     setTimeout(() => {
-      responseOrError.textContent = "";
+      responseOrError.textContent = ``;
       responseOrError.classList.remove(`text-danger`);
     }, 5000);
     return;
@@ -48,7 +48,7 @@ const sendVehicleToMongoDB = (e) => {
     responseOrError.textContent = `You have to choose Country!`;
     responseOrError.classList.add(`text-danger`);
     setTimeout(() => {
-      responseOrError.textContent = "";
+      responseOrError.textContent = ``;
       responseOrError.classList.remove(`text-danger`);
     }, 5000);
     return;
@@ -63,7 +63,7 @@ const sendVehicleToMongoDB = (e) => {
     responseOrError.textContent = `You have to choose Correct Country!`;
     responseOrError.classList.add(`text-danger`);
     setTimeout(() => {
-      responseOrError.textContent = "";
+      responseOrError.textContent = ``;
       responseOrError.classList.remove(`text-danger`);
     }, 5000);
     return;
@@ -76,20 +76,19 @@ const sendVehicleToMongoDB = (e) => {
   };
   console.log(newModel);
 
-  fetch("http://localhost:5000/vehicles", {
-    method: "POST",
+  fetch(`http://localhost:5000/vehicles`, {
+    method: `POST`,
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": `application/json`,
     },
     body: JSON.stringify(newModel),
   }).then((res) => {
     if (res.status === 200) {
       const responseOrError = document.querySelector(`#response-or-error`);
-      responseOrError.textContent =
-        "Success, server received data and added to DataBase";
+      responseOrError.textContent = `Success, server received data and added to DataBase`;
       responseOrError.classList.add(`text-success`);
       setTimeout(() => {
-        responseOrError.textContent = "";
+        responseOrError.textContent = ``;
         responseOrError.classList.remove(`text-success`);
       }, 2000);
     } else {
@@ -97,7 +96,7 @@ const sendVehicleToMongoDB = (e) => {
       responseOrError.textContent = `Server Error Code (status) ${res.status}. Please try again later or contact the system administrator.`;
       responseOrError.classList.add(`text-danger`);
       setTimeout(() => {
-        responseOrError.textContent = "";
+        responseOrError.textContent = ``;
         responseOrError.classList.remove(`text-success`);
       }, 5000);
     }
@@ -109,7 +108,7 @@ formElement
   ? document.addEventListener(`DOMContentLoaded`, createOptions)
   : null;
 formElement
-  ? formElement.addEventListener("submit", sendVehicleToMongoDB)
+  ? formElement.addEventListener(`submit`, sendVehicleToMongoDB)
   : null;
 
 //Exports

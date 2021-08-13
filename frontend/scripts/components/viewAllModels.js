@@ -1,23 +1,23 @@
 // Variables
-const tableModelElement = document.querySelector("#table-model");
-const tableModelCountElement = document.querySelector("#table-model-count");
+const tableModelElement = document.querySelector(`#table-model`);
+const tableModelCountElement = document.querySelector(`#table-model-count`);
 // Functions
 const showAllModels = () => {
-  fetch("http://localhost:5000/models")
+  fetch(`http://localhost:5000/models`)
     .then((res) => {
       if (res.status !== 200) {
         const responseOrError = document.querySelector(`#response-or-error`);
         responseOrError.textContent = `Something went wrong with models, error:${res.status})`;
         responseOrError.classList.add(`text-danger`);
         setTimeout(() => {
-          responseOrError.textContent = "";
+          responseOrError.textContent = ``;
           responseOrError.classList.remove(`text-danger`);
         }, 5000);
       }
       return res.json();
     })
     .then((data) => {
-      let output = "";
+      let output = ``;
       console.log(data);
       data.forEach((item) => {
         output += `
@@ -31,21 +31,21 @@ const showAllModels = () => {
       tableModelElement.innerHTML += output;
     });
 
-  fetch("http://localhost:5000/modelscount")
+  fetch(`http://localhost:5000/modelscount`)
     .then((res) => {
       if (res.status !== 200) {
         const responseOrError = document.querySelector(`#response-or-error`);
         responseOrError.textContent = `Something went wrong with modelsCount, error:${res.status})`;
         responseOrError.classList.add(`text-danger`);
         setTimeout(() => {
-          responseOrError.textContent = "";
+          responseOrError.textContent = ``;
           responseOrError.classList.remove(`text-danger`);
         }, 5000);
       }
       return res.json();
     })
     .then((data) => {
-      let output = "";
+      let output = ``;
       console.log(data);
       data.forEach((item) => {
         output += `
@@ -63,10 +63,8 @@ const showAllModels = () => {
 // Events
 
 tableModelElement
-  ? document.addEventListener("DOMContentLoaded", showAllModels)
+  ? document.addEventListener(`DOMContentLoaded`, showAllModels)
   : null;
-
-// .addEventListener("DOMContentLoaded", showAllModels)
 
 //Exports
 export default showAllModels;
