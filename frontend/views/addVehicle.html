@@ -19,12 +19,15 @@
       <!-- Form for adding models -->
       <div class="container">
         <form id="vehicle-form">
+          <div class="container">
+            <p id="response-or-error" class=""></p>
+          </div>
           <select
             id="vehicle-model-id"
             class="form-select"
             aria-label="Default select example"
           >
-            <option selected>Choose model</option>
+            <option value="choose model" selected>Choose model</option>
           </select>
           <div class="mb-3">
             <label for="number-plate" class="form-label">Number plate</label>
@@ -42,7 +45,7 @@
           </div>
           <div class="mb-3">
             <select class="form-select" aria-label="Default select example">
-              <option selected>Choose country</option>
+              <option value="choose country" selected>Choose country</option>
               <option value="LT">LT</option>
               <option value="LV">LV</option>
               <option value="EE">EE</option>

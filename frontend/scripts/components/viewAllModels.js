@@ -4,7 +4,18 @@ const tableModelCountElement = document.querySelector("#table-model-count");
 // Functions
 const showAllModels = () => {
   fetch("http://localhost:5000/models")
-    .then((res) => res.json())
+    .then((res) => {
+      if (res.status !== 200) {
+        const responseOrError = document.querySelector(`#response-or-error`);
+        responseOrError.textContent = `Something went wrong with models, error:${res.status})`;
+        responseOrError.classList.add(`text-danger`);
+        setTimeout(() => {
+          responseOrError.textContent = "";
+          responseOrError.classList.remove(`text-danger`);
+        }, 5000);
+      }
+      return res.json();
+    })
     .then((data) => {
       let output = "";
       console.log(data);
@@ -21,7 +32,18 @@ const showAllModels = () => {
     });
 
   fetch("http://localhost:5000/modelscount")
-    .then((res) => res.json())
+    .then((res) => {
+      if (res.status !== 200) {
+        const responseOrError = document.querySelector(`#response-or-error`);
+        responseOrError.textContent = `Something went wrong with modelsCount, error:${res.status})`;
+        responseOrError.classList.add(`text-danger`);
+        setTimeout(() => {
+          responseOrError.textContent = "";
+          responseOrError.classList.remove(`text-danger`);
+        }, 5000);
+      }
+      return res.json();
+    })
     .then((data) => {
       let output = "";
       console.log(data);

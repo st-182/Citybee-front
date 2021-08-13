@@ -6,7 +6,18 @@ const allVehiclesFromDB = [];
 // Functions
 const showAllVehicles = async () => {
   await fetch("http://localhost:5000/vehicles")
-    .then((res) => res.json())
+    .then((res) => {
+      if (res.status !== 200) {
+        const responseOrError = document.querySelector(`#response-or-error`);
+        responseOrError.textContent = `Something went wrong with vehicles, error:${res.status})`;
+        responseOrError.classList.add(`text-danger`);
+        setTimeout(() => {
+          responseOrError.textContent = "";
+          responseOrError.classList.remove(`text-danger`);
+        }, 5000);
+      }
+      return res.json();
+    })
     .then((data) => {
       allVehiclesFromDB.push(...data);
       let output = "";
